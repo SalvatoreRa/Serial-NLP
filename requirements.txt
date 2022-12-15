@@ -4,3 +4,4 @@ transformers
 bs4
 tensorflow
 click==7.1.2
+time
