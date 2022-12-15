@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import tensorflow
 import time
 
-@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
+
 # https://en.wikipedia.org/wiki/Andor_(TV_series)
 def text_recovery(url):
     # Make a  request to the URL
@@ -36,7 +36,7 @@ def text_recovery(url):
     st.write('Wiki page successfully recovered')        
     return text
 
-
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
 def load_summarization():
     model = pipeline("summarization", model="t5-base", 
     tokenizer="t5-base", framework="tf")
