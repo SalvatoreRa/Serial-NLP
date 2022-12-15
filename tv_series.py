@@ -3,6 +3,7 @@ from transformers import pipeline
 import requests
 from bs4 import BeautifulSoup
 import tensorflow
+import time
 # https://en.wikipedia.org/wiki/Andor_(TV_series)
 def text_recovery(url):
     # Make a  request to the URL
@@ -41,8 +42,16 @@ def load_summarization():
 
 def summarization(text, model):
     st.write('Making magic: please wait')
-    summary_episodes = model(text[0], min_length=5, max_length=512)
-    st.write(summary_episodes)
+    my_bar = st.progress(0)
+    for i in range(len(text)):
+        percent_complete = int(100/len(text)) * (i+1)
+        if percent_complete >= 100:
+            percent_complete = 100
+        my_bar.progress(percent_complete)
+
+
+        #summary_episodes = model(text[0], min_length=5, max_length=512)
+    
     return summary_episodes
     
 
@@ -61,6 +70,7 @@ def main():
         text = text_recovery(url)
         model= load_summarization()
         summary = summarization(text, model)
+        st.write(summary)
     
 
 
