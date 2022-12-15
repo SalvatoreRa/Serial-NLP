@@ -4,6 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 import tensorflow
 import time
+
+@st.cache
 # https://en.wikipedia.org/wiki/Andor_(TV_series)
 def text_recovery(url):
     # Make a  request to the URL
