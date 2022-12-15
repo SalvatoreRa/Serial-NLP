@@ -2,7 +2,7 @@ import streamlit as st
 from transformers import pipeline
 import requests
 from bs4 import BeautifulSoup
-#"https://en.wikipedia.org/wiki/Andor_(TV_series)"
+# https://en.wikipedia.org/wiki/Andor_(TV_series)
 def text_recovery(url):
     # Make a  request to the URL
     response = requests.get(str(url))
