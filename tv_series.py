@@ -42,6 +42,7 @@ def text_recovery(url):
 def load_summarization():
     summarizer = pipeline("summarization", model="t5-base", 
     tokenizer="t5-base", framework="tf")
+    return summarizer
 
 #summarizer(text[0], min_length=5, max_length=512)
             
@@ -56,7 +57,7 @@ def main():
     result = st.button('Run on url')
     if result:
         text_recovery(url)
-        def load_summarization()
+        load_summarization()
     
 
 
