@@ -37,7 +37,7 @@ def text_recovery(url):
 def load_summarization():
     model = pipeline("summarization", model="t5-base", 
     tokenizer="t5-base", framework="tf")
-    return summarizer
+    return model
 
 def summarization(text, model):
     st.write('Making magic: please wait')
