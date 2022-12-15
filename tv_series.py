@@ -39,14 +39,14 @@ def load_summarization():
     tokenizer="t5-base", framework="tf")
     return summarizer
 
-def load_summarization(text, model):
+def summarization(text, model):
     st.write('Making magic: please wait')
-    summary = model(text[0], min_length=5, max_length=512)
+    summary_episodes = model(text[0], min_length=5, max_length=512)
     print('done')
-    return summary
+    return summary_episodes
     
 
-#summarizer(text[0], min_length=5, max_length=512)
+
             
     
 
@@ -60,6 +60,7 @@ def main():
     if result:
         text = text_recovery(url)
         model= load_summarization()
+        summary = summarization(text, model)
     
 
 
