@@ -7,43 +7,44 @@ import tensorflow
 def text_recovery(url):
     # Make a  request to the URL
     response = requests.get(str(url))
-    print("ba")
-
+    
     # Parse the HTML content of the page using BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
-    print("ba1")
+    
 
     # Find the table that contains the episode summary
-
     table = soup.find('table', {'class': 'wikiepisodetable'})
     text = []
-    print("ba2")
-
+    
     # Iterate over the rows in the table
     for row in table.find_all('tr'):
         # Find the cells in each row
-        print("ba3")
-
+        
         cells = row.find_all('td')
-        print("ba4")
-
+        
         # If the row contains episode data
         if len(cells) == 1:
             # Extract the episode number, title, and summary
             episode_summary = cells[0].text
-            print("ba5")
+            
 
             # Print the episode data
             text.append(episode_summary)
-            print("ba5")
-    for i in range(len(text)):
-        st.write(text[i])
+    st.write('Wiki page successfully recovered')        
+    return text
 
 
 def load_summarization():
-    summarizer = pipeline("summarization", model="t5-base", 
+    model = pipeline("summarization", model="t5-base", 
     tokenizer="t5-base", framework="tf")
     return summarizer
+
+def load_summarization(text, model):
+    st.write('Making magic: please wait')
+    summary = model(text[0], min_length=5, max_length=512)
+    print('done')
+    return summary
+    
 
 #summarizer(text[0], min_length=5, max_length=512)
             
@@ -57,8 +58,8 @@ def main():
     url = st.text_area("Enter the link of the wikipedia page")
     result = st.button('Run on url')
     if result:
-        text_recovery(url)
-        load_summarization()
+        text = text_recovery(url)
+        model= load_summarization()
     
 
 
