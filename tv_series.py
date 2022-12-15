@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import tensorflow
 import time
 
-#@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
 # https://en.wikipedia.org/wiki/Andor_(TV_series)
 def text_recovery(url):
     # Make a  request to the URL
