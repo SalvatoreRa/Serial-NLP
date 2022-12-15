@@ -2,3 +2,4 @@ streamlit
 requests
 transformers
 bs4
+tensorflow
