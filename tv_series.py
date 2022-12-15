@@ -42,7 +42,7 @@ def load_summarization():
 def summarization(text, model):
     st.write('Making magic: please wait')
     summary_episodes = model(text[0], min_length=5, max_length=512)
-    print('done')
+    st.write(summary_episodes)
     return summary_episodes
     
 
