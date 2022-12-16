@@ -36,7 +36,7 @@ def text_recovery(url):
     st.write('Wiki page successfully recovered')        
     return text
 
-@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
+@st.cache(hash_funcs={"pipeline": lambda _: None})
 def load_summarization():
     model = pipeline("summarization", model="t5-base", 
     tokenizer="t5-base", framework="tf")
@@ -51,7 +51,7 @@ def summarization(text, model):
             percent_complete = 100
         my_bar.progress(percent_complete)
         summary_episode = model(text[i], min_length=5, max_length=512)
-        summary_episode =summary[0]['summary_text']
+        summary_episode =summary_episode[0]['summary_text']
         summary_episodes = summary_episodes + ' ' + summary_episode
 
 
