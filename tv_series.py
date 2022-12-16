@@ -50,8 +50,8 @@ def summarization(text, model):
         if percent_complete >= 100:
             percent_complete = 100
         my_bar.progress(percent_complete)
-        summary_episode = model(text[i], min_length=5, max_length=512)
-        summary_episode =summary_episode[0]['summary_text']
+        summary = model(text[i], min_length=5, max_length=512)
+        summary_episode =summary[0]['summary_text']
         summary_episodes = summary_episodes + ' ' + summary_episode
 
 
