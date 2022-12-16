@@ -45,6 +45,7 @@ def load_summarization():
 def summarization(text, model):
     st.write('Making magic: please wait')
     my_bar = st.progress(0)
+    summary_episodes =''
     for i in range(len(text)):
         percent_complete = int(100/len(text)) * (i+1)
         if percent_complete >= 100:
